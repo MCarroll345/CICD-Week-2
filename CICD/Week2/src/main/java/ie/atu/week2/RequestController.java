@@ -24,5 +24,34 @@ public class RequestController {
         return "Name: " + name + " Age: " + age;
     }
 
+    @GetMapping("/calculate")
+    public String calc(@RequestParam float num1, float num2, String operation)
+    {
+        float total = 0;
+        switch (operation){
+            case "add":
+                total = (num1 + num2);
+                break;
+
+            case "subtract":
+                total = (num1 - num2);
+                break;
+
+            case "multiply":
+                total = (num1 * num2);
+                break;
+
+            case "divide":
+                if(num2==0) {
+                    return "Error";
+                }
+                else{
+                    total = (num1 / num2);
+                }
+                break;
+        }
+        return "Answer: " + total;
+    }
+
 
 }
